@@ -1,0 +1,23 @@
+{
+    "name": "markkravchuk/statamic-backup-vcs",
+    "autoload": {
+        "psr-4": {
+            "Markkravchuk\\BackupVcs\\": "src"
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "spatie/laravel-backup": "^8.1"
+    },
+    "extra": {
+        "statamic": {
+            "name": "Backup Vcs",
+            "description": "Backup Vcs addon"
+        },
+        "laravel": {
+            "providers": [
+                "Markkravchuk\\BackupVcs\\ServiceProvider"
+            ]
+        }
+    }
+}
