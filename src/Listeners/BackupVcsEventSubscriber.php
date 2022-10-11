@@ -80,7 +80,7 @@ class BackupVcsEventSubscriber
      */
     public function handleAssetContainerSaved(AssetContainerSaved $event)
     {
-        $this->addEntry("Created/edited asset container '" . $event->container->title() . "' (id: '" . $event->container->id() . "')");
+        $this->addEntry("Edited asset container '" . $event->container->title() . "' (id: '" . $event->container->id() . "')");
     }
 
     /**
@@ -116,7 +116,7 @@ class BackupVcsEventSubscriber
      */
     public function handleAssetFolderSaved(AssetFolderSaved $event)
     {
-        $this->addEntry("Created/edited asset folder '" . $event->folder->path() . "'");
+        $this->addEntry("Edited asset folder " . $event->folder->path());
     }
 
     /**
@@ -128,31 +128,7 @@ class BackupVcsEventSubscriber
      */
     public function handleAssetSaved(AssetSaved $event)
     {
-        $this->addEntry("Created/edited asset '" . $event->asset->url() . "'");
-    }
-
-    /**
-     * Handle the BlueprintDeleted event.
-     *
-     * @param BlueprintDeleted $event
-     *
-     * @return void
-     */
-    public function handleBlueprintDeleted(BlueprintDeleted $event)
-    {
-        $this->addEntry("Deleted blueprint '" . $event->blueprint->title() . "' (handle: '" . $event->blueprint->handle() . "') for '" . $event->blueprint->namespace() . "'");
-    }
-
-    /**
-     * Handle the BlueprintSaved event.
-     *
-     * @param BlueprintSaved $event
-     *
-     * @return void
-     */
-    public function handleBlueprintSaved(BlueprintSaved $event)
-    {
-        $this->addEntry("Created/edited blueprint '" . $event->blueprint->title() . "' (handle: '" . $event->blueprint->handle() . "') for '" . $event->blueprint->namespace() . "'");
+        $this->addEntry("Edited asset " . $event->asset->url() . "");
     }
 
     /**
@@ -176,7 +152,7 @@ class BackupVcsEventSubscriber
      */
     public function handleCollectionSaved(CollectionSaved $event)
     {
-        $this->addEntry("Created/edited collection '" . $event->collection->title() . "' (handle '" . $event->collection->handle() . "')");
+        $this->addEntry("Edited collection '" . $event->collection->title() . "' (handle '" . $event->collection->handle() . "')");
     }
 
     /**
@@ -204,54 +180,6 @@ class BackupVcsEventSubscriber
     }
 
     /**
-     * Handle the FieldsetDeleted event.
-     *
-     * @param FieldsetDeleted $event
-     *
-     * @return void
-     */
-    public function handleFieldsetDeleted(FieldsetDeleted $event)
-    {
-        $this->addEntry("Deleted fieldset '" . $event->fieldset->title() . "' (handle: '" . $event->fieldset->handle() . "')");
-    }
-
-    /**
-     * Handle the FieldsetSaved event.
-     *
-     * @param FieldsetSaved $event
-     *
-     * @return void
-     */
-    public function handleFieldsetSaved(FieldsetSaved $event)
-    {
-        $this->addEntry("Created/edited fieldset '" . $event->fieldset->title() . "' (handle: '" . $event->fieldset->handle() . "')");
-    }
-
-    /**
-     * Handle the FormDeleted event.
-     *
-     * @param FormDeleted $event
-     *
-     * @return void
-     */
-    public function handleFormDeleted(FormDeleted $event)
-    {
-        $this->addEntry("Deleted form '" . $event->form->title() . "' (handle: '" . $event->form->handle() . "')");
-    }
-
-    /**
-     * Handle the FormSaved event.
-     *
-     * @param FormSaved $event
-     *
-     * @return void
-     */
-    public function handleFormSaved(FormSaved $event)
-    {
-        $this->addEntry("Created/edited form '" . $event->form->title() . "' (handle: '" . $event->form->handle() . "')");
-    }
-
-    /**
      * Handle the GlobalSetDeleted event.
      *
      * @param GlobalSetDeleted $event
@@ -260,7 +188,7 @@ class BackupVcsEventSubscriber
      */
     public function handleGlobalSetDeleted(GlobalSetDeleted $event)
     {
-        $this->addEntry("Celeted global set '" . $event->globals->title() . "' (handle: '" . $event->globals->handle() . "')");
+        $this->addEntry("Celeted global set '" . $event->globals->title() . "' (handle '" . $event->globals->handle() . "')");
     }
 
     /**
@@ -272,7 +200,7 @@ class BackupVcsEventSubscriber
      */
     public function handleGlobalSetSaved(GlobalSetSaved $event)
     {
-        $this->addEntry("Created/edited global set '" . $event->globals->title() . "' (handle: '" . $event->globals->handle() . "')");
+        $this->addEntry("Edited global set '" . $event->globals->title() . "' (handle: '" . $event->globals->handle() . "')");
     }
 
     /**
@@ -296,43 +224,7 @@ class BackupVcsEventSubscriber
      */
     public function handleNavSaved(NavSaved $event)
     {
-        $this->addEntry("Created/edited navigation '" . $event->nav->title() . "' (handle: '" . $event->nav->handle() . "')");
-    }
-
-    /**
-     * Handle the RoleDeleted event.
-     *
-     * @param RoleDeleted $event
-     *
-     * @return void
-     */
-    public function handleRoleDeleted(RoleDeleted $event)
-    {
-        $this->addEntry("Celeted role '" . $event->role->title() . "' (handle: '" . $event->role->handle() . "')");
-    }
-
-    /**
-     * Handle the RoleSaved event.
-     *
-     * @param RoleSaved $event
-     *
-     * @return void
-     */
-    public function handleRoleSaved(RoleSaved $event)
-    {
-        $this->addEntry("Created/edited role '" . $event->role->title() . "' (handle: '" . $event->role->handle() . "')");
-    }
-
-    /**
-     * Handle the SubmissionDeleted event.
-     *
-     * @param SubmissionDeleted $event
-     *
-     * @return void
-     */
-    public function handleSubmissionDeleted(SubmissionDeleted $event)
-    {
-        $this->addEntry("Deleted submission with id '" . $event->submission->id() . "' for form '" . $event->submission->form()->title() . "' (handle: '" . $event->submission->form()->handle() . "')");
+        $this->addEntry("Edited navigation '" . $event->nav->title() . "' (handle: '" . $event->nav->handle() . "')");
     }
 
     /**
@@ -380,55 +272,7 @@ class BackupVcsEventSubscriber
      */
     public function handleTermSaved(TermSaved $event)
     {
-        $this->addEntry("Created/edited term '" . $event->term->title() . "' (id: '" . $event->term->id() . "') in taxonomy '" . $event->term->taxonomy()->title() . "'");
-    }
-
-    /**
-     * Handle the UserDeleted event.
-     *
-     * @param UserDeleted $event
-     *
-     * @return void
-     */
-    public function handleUserDeleted(UserDeleted $event)
-    {
-        $this->addEntry("Deleted user '" . $event->user->name . "' (e-mail: '" . $event->user->email() . "', id: '" . $event->user->id() . "')");
-    }
-
-    /**
-     * Handle the UserGroupDeleted event.
-     *
-     * @param UserGroupDeleted $event
-     *
-     * @return void
-     */
-    public function handleUserGroupDeleted(UserGroupDeleted $event)
-    {
-        $this->addEntry("Deleted user group '" . $event->group->title() . "' (handle: '" . $event->group->handle() . "')");
-    }
-
-    /**
-     * Handle the UserGroupSaved event.
-     *
-     * @param UserGroupSaved $event
-     *
-     * @return void
-     */
-    public function handleUserGroupSaved(UserGroupSaved $event)
-    {
-        $this->addEntry("Created/edited user group '" . $event->group->title() . "' (handle: '" . $event->group->handle() . "')");
-    }
-
-    /**
-     * Handle the UserSaved event.
-     *
-     * @param UserSaved $event
-     *
-     * @return void
-     */
-    public function handleUserSaved(UserSaved $event)
-    {
-        $this->addEntry("Created/edited user '" . $event->user->name . "' (e-mail: '" . $event->user->email() . "', id: '" . $event->user->id() . "')");
+        $this->addEntry("Edited term '" . $event->term->title() . "' (id: '" . $event->term->id() . "') in taxonomy '" . $event->term->taxonomy()->title() . "'");
     }
 
     /**
@@ -447,31 +291,18 @@ class BackupVcsEventSubscriber
             AssetFolderDeleted::class => 'handleAssetFolderDeleted',
             AssetFolderSaved::class => 'handleAssetFolderSaved',
             AssetSaved::class => 'handleAssetSaved',
-            BlueprintDeleted::class => 'handleBlueprintDeleted',
-            BlueprintSaved::class => 'handleBlueprintSaved',
             CollectionDeleted::class => 'handleCollectionDeleted',
             CollectionSaved::class => 'handleCollectionSaved',
             EntryDeleted::class => 'handleEntryDeleted',
             EntrySaved::class => 'handleEntrySaved',
-            FieldsetDeleted::class => 'handleFieldsetDeleted',
-            FieldsetSaved::class => 'handleFieldsetSaved',
-            FormDeleted::class => 'handleFormDeleted',
-            FormSaved::class => 'handleFormSaved',
             GlobalSetDeleted::class => 'handleGlobalSetDeleted',
             GlobalSetSaved::class => 'handleGlobalSetSaved',
             NavDeleted::class => 'handleNavDeleted',
             NavSaved::class => 'handleNavSaved',
-            RoleDeleted::class => 'handleRoleDeleted',
-            RoleSaved::class => 'handleRoleSaved',
-            SubmissionDeleted::class => 'handleSubmissionDeleted',
             TaxonomyDeleted::class => 'handleTaxonomyDeleted',
             TaxonomySaved::class => 'handleTaxonomySaved',
             TermDeleted::class => 'handleTermDeleted',
             TermSaved::class => 'handleTermSaved',
-            UserDeleted::class => 'handleUserDeleted',
-            UserGroupDeleted::class => 'handleUserGroupDeleted',
-            UserGroupSaved::class => 'handleUserGroupSaved',
-            UserSaved::class => 'handleUserSaved',
         ];
     }
 
