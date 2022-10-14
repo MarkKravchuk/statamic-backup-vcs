@@ -47,15 +47,18 @@ class BackupVcsEventSubscriber
      */
     public function addEntry($message)
     {
-        Artisan::call('backup:run --disable-notifications');
+        if (env('APP_ENV') === "staging" || env('APP_ENV') === 'production') {
 
-        try {
-            $filepath = $this->renameLocalBackup($message);
-            $this->moveBackupToCloudStorage($filepath);
-            $this->removeLocalBackup();
-        } catch (\Exception $e) {
-            $this->removeLocalBackup();
-            throw new \Exception($e->getMessage());
+            Artisan::call('backup:run --disable-notifications');
+
+            try {
+                $filepath = $this->renameLocalBackup($message);
+                $this->moveBackupToCloudStorage($filepath);
+                $this->removeLocalBackup();
+            } catch (\Exception $e) {
+                $this->removeLocalBackup();
+                throw new \Exception($e->getMessage());
+            }
         }
     }
 
@@ -337,6 +340,6 @@ class BackupVcsEventSubscriber
             'gcs-backup' => \Storage::disk('gcs-backup')->getDriver(),
             'local' => \Storage::disk('local')->getDriver(),
         ]);
-        $mountManager->copy('local://'.$filepath, 'gcs-backup://'.$filepath);
+        $mountManager->copy('local://' . $filepath, 'gcs-backup://' . $filepath);
     }
 }
